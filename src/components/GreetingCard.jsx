@@ -1,6 +1,8 @@
 // import React from "react";
 // import Button from "./Button";
 
+import Button from "./Button";
+
 // const GreetingCard = ({ name }) => {
 //   return (
 //     <div className='p-4 rounded shadow'>
@@ -16,10 +18,14 @@
 // export default GreetingCard;
 
 
-export function Greeting () {
+export function Greeting (props) {
+  const { name, sayBye  } = props;
   return (
     <div>
-      <h1>Joel </h1>
+      <h1>Welcome to my react app, {name} </h1>
+      <Button onClick={sayBye} >
+        Good Bye
+      </Button>
     </div>
   )
 }
