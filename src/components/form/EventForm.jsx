@@ -27,9 +27,9 @@ const EventForm = () => {
             id="eventName"
             placeholder="Enter event name"
             className="border border-gray-400 p-2 rounded-md w-full"
-            // onChange={(e) =>
-            //   setFormData({ ...formData, eventName: e.target.value })
-            // }
+            onChange={(e) =>
+              setFormData({ ...formData, eventName: e.target.value })
+            }
           />
         </div>
         <div className="p-2 text-left">
@@ -42,9 +42,9 @@ const EventForm = () => {
             id="eventDes"
             placeholder="Enter event description"
             className="border border-gray-400 p-2 rounded-md w-full"
-            // onChange={(e) =>
-            //   setFormData({ ...formData, eventDes: e.target.value })
-            // }
+            onChange={(e) =>
+              setFormData({ ...formData, eventDes: e.target.value })
+            }
           />
         </div>
         <div className="p-2 text-left">
@@ -57,9 +57,9 @@ const EventForm = () => {
             id="eventDate"
             placeholder="Enter event date"
             className="border border-gray-400 p-2 rounded-md w-full"
-            // onChange={(e) =>
-            //   setFormData({ ...formData, eventDate: e.target.value })
-            // }
+            onChange={(e) =>
+              setFormData({ ...formData, eventDate: e.target.value })
+            }
           />
         </div>
         <div className="p-2 mt-2">
