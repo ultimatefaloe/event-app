@@ -58,7 +58,9 @@ const EventForm = () => {
             id="location"
             placeholder="Enter the location"
             className="border border-gray-400 p-2 rounded-md w-full"
-            onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, location: e.target.value })
+            }
           />
         </div>
         <div className="p-2 text-left">
@@ -91,8 +93,13 @@ const EventForm = () => {
             >
               <option value="">Select Category</option>
               <option value="conference">Conference</option>
-              <option value="meetup">Meetup</option>
+              <option value="music">Music</option>
+              <option value="networking">Networking</option>
+              <option value="charity">Charity</option>
               <option value="workshop">Workshop</option>
+              <option value="exhibition">Exhibition</option>
+              <option value="sports">Sports</option>
+              <option value="community">Community</option>
             </select>
           </div>
 

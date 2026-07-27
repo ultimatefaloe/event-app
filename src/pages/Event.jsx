@@ -1,128 +1,16 @@
 import React from "react";
 import EventCard from "../components/EventCard";
+import { events } from "../data/events";
 
 const Event = () => {
-  const events = [
-    {
-      id: 1,
-      name: "Tech Summit 2026",
-      description:
-        "Annual technology conference featuring keynote speakers from leading tech companies and workshops on AI, cloud computing, and cybersecurity.",
-      date: "2026-08-15T09:00:00",
-      status: "upcoming",
-      category: "conference",
-      createdAt: "2026-01-10T10:30:00",
-      updatedAt: "2026-07-20T14:15:00",
-    },
-    {
-      id: 2,
-      name: "Summer Music Festival",
-      description:
-        "Outdoor music festival with 20+ bands across 3 stages, food trucks, and art installations in the city park.",
-      date: "2026-07-04T12:00:00",
-      status: "upcoming",
-      category: "music",
-      createdAt: "2026-02-14T09:00:00",
-      updatedAt: "2026-07-01T16:45:00",
-    },
-    {
-      id: 3,
-      name: "Startup Pitch Night",
-      description:
-        "Local entrepreneurs pitch their business ideas to a panel of investors and industry experts. Networking opportunities available.",
-      date: "2026-06-20T18:30:00",
-      status: "completed",
-      category: "networking",
-      createdAt: "2026-03-05T11:20:00",
-      updatedAt: "2026-06-21T10:00:00",
-    },
-    {
-      id: 4,
-      name: "Charity Gala Dinner",
-      description:
-        "Black-tie fundraising event supporting local education initiatives. Includes dinner, auction, and guest speakers.",
-      date: "2026-09-10T19:00:00",
-      status: "upcoming",
-      category: "charity",
-      createdAt: "2026-04-01T08:00:00",
-      updatedAt: "2026-07-15T13:30:00",
-    },
-    {
-      id: 5,
-      name: "Hackathon 2026",
-      description:
-        "48-hour coding challenge where developers, designers, and innovators collaborate to build solutions for real-world problems.",
-      date: "2026-05-22T08:00:00",
-      status: "completed",
-      category: "workshop",
-      createdAt: "2026-02-20T15:00:00",
-      updatedAt: "2026-05-24T09:30:00",
-    },
-    {
-      id: 6,
-      name: "Art Exhibition Opening",
-      description:
-        "Showcasing contemporary art from emerging artists. Live painting demonstrations and wine tasting included.",
-      date: "2026-08-01T18:00:00",
-      status: "upcoming",
-      category: "exhibition",
-      createdAt: "2026-05-15T10:00:00",
-      updatedAt: "2026-07-10T11:45:00",
-    },
-    {
-      id: 7,
-      name: "Mental Health Awareness Workshop",
-      description:
-        "Interactive workshop focusing on stress management, mindfulness techniques, and mental wellness in the workplace.",
-      date: "2026-07-28T10:00:00",
-      status: "upcoming",
-      category: "workshop",
-      createdAt: "2026-06-01T12:00:00",
-      updatedAt: "2026-07-01T08:30:00",
-    },
-    {
-      id: 8,
-      name: "Annual Sports Gala",
-      description:
-        "Day-long sports event featuring basketball, football, and volleyball tournaments. Open to all skill levels.",
-      date: "2026-06-05T08:30:00",
-      status: "completed",
-      category: "sports",
-      createdAt: "2026-03-15T09:45:00",
-      updatedAt: "2026-06-06T17:20:00",
-    },
-    {
-      id: 9,
-      name: "Innovation Summit",
-      description:
-        "Two-day event bringing together thought leaders to discuss future trends in technology, sustainability, and business.",
-      date: "2026-10-12T09:30:00",
-      status: "upcoming",
-      category: "conference",
-      createdAt: "2026-04-20T14:00:00",
-      updatedAt: "2026-07-18T12:15:00",
-    },
-    {
-      id: 10,
-      name: "Community Clean-Up Drive",
-      description:
-        "Volunteer event to clean up local neighborhoods and parks. Supplies and refreshments provided for all participants.",
-      date: "2026-07-18T07:00:00",
-      status: "upcoming",
-      category: "community",
-      createdAt: "2026-06-10T16:30:00",
-      updatedAt: "2026-07-05T09:00:00",
-    },
-  ];
-
-  // const events = [];
+  const data = events;
   return (
     <div>
       <div className="grid grid-cols-2 gap-4">
-        {events.length > 0 ? (
-          events.map((event) => <EventCard key={event.id} event={event} />)
+        {data.length > 0 ? (
+          data.map((event) => <EventCard key={event.id} event={event} />)
         ) : (
-          <div className="flex jutify-center items-center h-40">
+          <div className="flex justify-center items-center h-40">
             <p className="text-gray-400 text-lg font-bold">No Events Found</p>
           </div>
         )}
