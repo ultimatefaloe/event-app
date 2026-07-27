@@ -1,10 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const EventCard = ({ event }) => {
-  const { name, description, date, status, category, createdAt, updatedAt } = event;
+  const navigate = useNavigate();
+  const { id, name, description, date, status, category, createdAt, updatedAt } = event;
 
   return (
-    <div className="p-2 rounded-lg border border-gray-100">
+    <div className="p-2 rounded-lg border border-gray-100 cursor-pointer" onClick={() => navigate(`/events/${id}`)}>
       <div className="flex justify-between items-center mb-2">
         {/* Left */}
         <div className="text-left">

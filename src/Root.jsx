@@ -3,8 +3,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
 import RootLayout from "./components/layouts/RootLayout";
+import AuthLayout from "./components/layouts/AuthLayout";
 import Event from "./pages/Event";
 import NewEvent from "./pages/NewEvent";
+import EventDetail from "./pages/EventDetail";
 
 const router = createBrowserRouter([
   {
@@ -17,21 +19,39 @@ const router = createBrowserRouter([
       },
       {
         path: "/events",
-        element: <Event />
+        element: <Event />,
       },
-       {
+      {
         path: "/events/new",
-        element: <NewEvent />
+        element: <NewEvent />,
+      },
+      {
+        path: "/events/:id",
+        element: <EventDetail />,
       },
       {
         path: "/profile",
         element: <Profile />,
       },
+    ],
+  },
+  {
+    path: "auth",
+    element: <AuthLayout />,
+    children: [
       {
-        path: "/login",
+        path: "/auth/login",
         element: (
           <div>
-            <h1> This is auth page</h1>
+            <h1 className="text-white text-6xl"> This is Login Auth page</h1>
+          </div>
+        ),
+      },
+      {
+        path: "/auth/register",
+        element: (
+          <div>
+            <h1 className="text-white text-6xl"> This is Register Auth page</h1>
           </div>
         ),
       },
