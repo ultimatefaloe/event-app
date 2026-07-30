@@ -2,7 +2,7 @@ import React from "react";
 import EventCard from "../components/EventCard";
 import { useEvent } from "../hooks/useEvent.hook";
 const Event = () => {
-  const {eventsData, loading, error} = useEvent();
+  const { eventsData, loading, error, updateEvent, deleteEvent  } = useEvent();
 
   return (
     <div>
@@ -16,7 +16,14 @@ const Event = () => {
             <p className="text-red-500 text-lg font-bold">Error: {error}</p>
           </div>
         ) : eventsData.length > 0 ? (
-          eventsData.map((event) => <EventCard key={event.id} event={event} />)
+          eventsData.map((event) => (
+            <EventCard
+              key={event.id}
+              event={event}
+              onEdit={() => updateEvent(event.id)}
+              onDelete={() => deleteEvent(event.id)}
+            />
+          ))
         ) : (
           <div className="flex justify-center items-center h-40">
             <p className="text-gray-400 text-lg font-bold">No Events Found</p>
