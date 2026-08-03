@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import Button from "../Button";
 import { Plus } from "lucide-react";
+import { useEvent } from "../../hooks/useEvent.hook";
+import { toast } from "react-toastify";
+import { useEventStore } from "../../store/event.store";
 
 const EventForm = () => {
+  // const { createEvent } = useEvent();
+  const createEvent = useEventStore((state) => state.addEvent);
   const [formData, setFormData] = useState({
     name: "",
     date: "",
@@ -14,7 +19,34 @@ const EventForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
+
+    if (
+      !formData.name ||
+      !formData.date ||
+      !formData.location ||
+      !formData.description ||
+      !formData.category
+    ) {
+      toast.warning("Please fill in all required fields");
+      return;
+    }
+
+    createEvent(formData);
+    toast.success("Event created successfully");
+
+    // if (res.success) {
+    //   setFormData({
+    //     name: "",
+    //     date: "",
+    //     location: "",
+    //     description: "",
+    //     category: "",
+    //     status: "upcoming",
+    //   });
+    //   toast.success(res.message || "Event created successfully");
+    // } else {
+    //  toast.error(res.message || "Failed to create event");
+    // }
   };
 
   return (
@@ -30,6 +62,7 @@ const EventForm = () => {
             id="name"
             placeholder="Name your Event"
             className="border border-gray-400 p-2 rounded-md w-full"
+            value={formData?.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           />
         </div>
@@ -44,6 +77,7 @@ const EventForm = () => {
             id="date"
             placeholder="Choose a date"
             className="border border-gray-400 p-2 rounded-md w-full"
+            value={formData?.date}
             onChange={(e) => setFormData({ ...formData, date: e.target.value })}
           />
         </div>
@@ -58,6 +92,7 @@ const EventForm = () => {
             id="location"
             placeholder="Enter the location"
             className="border border-gray-400 p-2 rounded-md w-full"
+            value={formData?.location}
             onChange={(e) =>
               setFormData({ ...formData, location: e.target.value })
             }
@@ -73,6 +108,7 @@ const EventForm = () => {
             id="description"
             placeholder="Describe your event"
             className="border border-gray-400 p-2 rounded-md w-full"
+            value={formData?.description}
             onChange={(e) =>
               setFormData({ ...formData, description: e.target.value })
             }
@@ -87,6 +123,7 @@ const EventForm = () => {
               name="category"
               id="category"
               className="border border-gray-400 p-2 rounded-md w-full"
+              value={formData?.category}
               onChange={(e) =>
                 setFormData({ ...formData, category: e.target.value })
               }
@@ -111,6 +148,7 @@ const EventForm = () => {
               name="status"
               id="status"
               className="border border-gray-400 p-2 rounded-md w-full"
+              value={formData?.status}
               onChange={(e) =>
                 setFormData({ ...formData, status: e.target.value })
               }

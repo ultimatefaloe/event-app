@@ -47,7 +47,13 @@ export const useEvent = () => {
       updatedAt: null,
     };
 
-    setEventsData([newEvent, ...eventsData]);
+    console.log('Creating new event:', newEvent);
+    setEventsData(prev => [...prev, newEvent]);
+    return {
+      success: false,
+      message: "Event created successfully",
+      data: newEvent,
+    }
   }
 
 
