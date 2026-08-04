@@ -4,10 +4,13 @@ import { Plus } from "lucide-react";
 import { useEvent } from "../../hooks/useEvent.hook";
 import { toast } from "react-toastify";
 import { useEventStore } from "../../store/event.store";
+import { useNavigate } from "react-router-dom";
 
 const EventForm = () => {
   // const { createEvent } = useEvent();
+  const navigate = useNavigate();
   const createEvent = useEventStore((state) => state.addEvent);
+
   const [formData, setFormData] = useState({
     name: "",
     date: "",
@@ -29,24 +32,19 @@ const EventForm = () => {
     ) {
       toast.warning("Please fill in all required fields");
       return;
+    } else {
+      createEvent(formData);
+      toast.success("Event created successfully");
+      setFormData({
+        name: "",
+        date: "",
+        location: "",
+        description: "",
+        category: "",
+        status: "upcoming",
+      });
+      navigate("/events");
     }
-
-    createEvent(formData);
-    toast.success("Event created successfully");
-
-    // if (res.success) {
-    //   setFormData({
-    //     name: "",
-    //     date: "",
-    //     location: "",
-    //     description: "",
-    //     category: "",
-    //     status: "upcoming",
-    //   });
-    //   toast.success(res.message || "Event created successfully");
-    // } else {
-    //  toast.error(res.message || "Failed to create event");
-    // }
   };
 
   return (

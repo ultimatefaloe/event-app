@@ -26,7 +26,7 @@ const Event = () => {
             <EventCard
               key={event.id}
               event={event}
-              onEdit={() => updateEvent(event.id)}
+              onEdit={() => updateEvent(event.id, event)}
               onDelete={() => deleteEvent(event.id)}
             />
           ))
