@@ -45,7 +45,14 @@ const NavBar = () => {
           <Plus size={16} />
           New Event
         </Link>
-{/* 
+
+        <Link
+          to="/login"
+          className="flex items-center gap-1 border border-indigo-600 text-indigo-600 hover:text-white px-3 py-1.5 rounded hover:bg-indigo-700 text-sm font-medium"
+        >
+          Login
+        </Link>
+        {/* 
         <button
           onClick={toggleTheme}
           className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400"

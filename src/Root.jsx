@@ -7,6 +7,8 @@ import AuthLayout from "./components/layouts/AuthLayout";
 import Event from "./pages/Event";
 import NewEvent from "./pages/NewEvent";
 import EventDetail from "./pages/EventDetail";
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
 
 const router = createBrowserRouter([
   {
@@ -36,24 +38,16 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "auth",
+    path: "",
     element: <AuthLayout />,
     children: [
       {
-        path: "/auth/login",
-        element: (
-          <div>
-            <h1 className="text-white text-6xl"> This is Login Auth page</h1>
-          </div>
-        ),
+        path: "/login",
+        element: <Login />,
       },
       {
-        path: "/auth/register",
-        element: (
-          <div>
-            <h1 className="text-white text-6xl"> This is Register Auth page</h1>
-          </div>
-        ),
+        path: "/register",
+        element: <Register />,
       },
     ],
   },
