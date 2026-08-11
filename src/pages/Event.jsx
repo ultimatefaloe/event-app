@@ -4,7 +4,12 @@ import { useEventStore } from "../store/event.store";
 
 const Event = () => {
   // const { events: ev, loading, error, updateEvent, deleteEvent  } = useEventStore();
-  const events = useEventStore((state) => state.events);
+  // const events = useEventStore((state) => state.events);
+  // const loading = useEventStore((state) => state.loading);
+  // const error = useEventStore((state) => state.error);
+  // const updateEvent = useEventStore((state) => state.updateEvent);
+  // const deleteEvent = useEventStore((state) => state.removeEvent);
+  const events = useEventStore(s => s.events);
   const loading = useEventStore((state) => state.loading);
   const error = useEventStore((state) => state.error);
   const updateEvent = useEventStore((state) => state.updateEvent);

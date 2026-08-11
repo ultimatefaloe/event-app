@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { events } from '../data/events'
+import React, { useEffect, useState } from "react";
+import { events } from "../data/events";
 
 export const useEvent = () => {
   // add the loading state and error state to the hook
@@ -7,7 +7,7 @@ export const useEvent = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  useEffect(()=> {
+  useEffect(() => {
     getEvents();
   }, []);
 
@@ -47,20 +47,19 @@ export const useEvent = () => {
       updatedAt: null,
     };
 
-    console.log('Creating new event:', newEvent);
-    setEventsData(prev => [...prev, newEvent]);
+    console.log("Creating new event:", newEvent);
+    setEventsData((prev) => [...prev, newEvent]);
     return {
       success: false,
       message: "Event created successfully",
       data: newEvent,
-    }
-  }
-
+    };
+  };
 
   const updateEvent = (id, data) => {
-    const eventToBeUpdated = eventsData.find((event)=> event.id === id);
+    const eventToBeUpdated = eventsData.find((event) => event.id === id);
 
-    if(!eventToBeUpdated) {
+    if (!eventToBeUpdated) {
       setError(`Event with id ${id} not found`);
       return;
     }
@@ -69,13 +68,14 @@ export const useEvent = () => {
       ...eventToBeUpdated,
       ...data,
       updatedAt: new Date().toISOString(),
-    }
+    };
 
-    const updatedEvents = eventsData.map(e => e.id === id ? updatedEvent : e);
+    const updatedEvents = eventsData.map((e) =>
+      e.id === id ? updatedEvent : e,
+    );
 
     setEventsData(updatedEvents);
   };
-
 
   const deleteEvent = (id) => {
     const updatedEvents = eventsData.filter((event) => event.id !== id);
@@ -91,4 +91,4 @@ export const useEvent = () => {
     updateEvent,
     deleteEvent,
   };
-}
+};
