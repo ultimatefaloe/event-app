@@ -31,10 +31,12 @@ export const useAuthStore = create()(
           };
         }
 
+        const { password, ...cleanedUser} = user
+
         return {
           succes: true,
           message: "Login successful",
-          data: user,
+          data: cleanedUser,
         };
 
         // call the session store to set the session

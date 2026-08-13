@@ -155,14 +155,13 @@ const EventDetail = () => {
         Back to Events
       </button>
 
-      {/* Event header */}
+      {/* Event header */}events
       <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
         <div>
           <div className="flex items-center gap-3 mb-2">
             <span
               className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium ${statusInfo.bg} ${statusInfo.color}`}
             >
-              Bizmarrow8585
               <statusInfo.icon className="w-4 h-4" />
               {event.status.charAt(0).toUpperCase() + event.status.slice(1)}
             </span>

@@ -75,7 +75,7 @@ export const useEventStore = create()(
 
       addEvent: (event) => {
         const newEvent = {
-          id: events.length + 1, // Date.now()
+          id: get().events.length + 1, // Date.now()
           name: event.name,
           description: event.description,
           date: event.date,

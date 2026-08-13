@@ -3,13 +3,15 @@ import Button from "../../components/Button";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuthStore } from "../../store/auth.store";
+import { useSessionStore } from "../../store/session.store";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const login = useAuthStore((state) => state.login);
-  const navigate = useNavigate();
+  const session = useSessionStore((state) => state.setSession);
 
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     if (email.trim() === "" || password.trim() === "") {
@@ -33,6 +35,8 @@ const Login = () => {
 
     toast.success(res.message);
     console.log("Login successful:", res.data);
+    const user = res.data;
+    session(user);
     setEmail("");
     setPassword("");
 
