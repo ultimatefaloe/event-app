@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
+import { useSessionStore } from "./session.store";
 
 export const useAuthStore = create()(
   persist(
@@ -9,7 +10,7 @@ export const useAuthStore = create()(
       error: null,
 
       login: (data) => {
-        const { email, password } = data;
+        const { email, password: userPassword } = data;
 
         const user = get().users?.find(
           (user) => user.email.toLowerCase() === email.toLowerCase(),
@@ -23,7 +24,7 @@ export const useAuthStore = create()(
           };
         }
 
-        if (user.password !== password) {
+        if (user.password !== userPassword) {
           return {
             succes: false,
             message: "Incorrect password",
@@ -42,6 +43,7 @@ export const useAuthStore = create()(
         // call the session store to set the session
         // we are going to handle the session in the session store, so we don't need to set it here, returning the user is not found or incorrect password
       },
+
       register: (data) => {
         const { users } = get();
         const { email } = data;

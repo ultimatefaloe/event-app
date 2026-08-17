@@ -9,7 +9,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const login = useAuthStore((state) => state.login);
-  const session = useSessionStore((state) => state.setSession);
+  const setSession = useSessionStore((state) => state.setSession);
 
   const navigate = useNavigate();
   const handleSubmit = (e) => {
@@ -33,10 +33,10 @@ const Login = () => {
       return;
     }
 
+    setSession(res.data);
     toast.success(res.message);
     console.log("Login successful:", res.data);
     const user = res.data;
-    session(user);
     setEmail("");
     setPassword("");
 

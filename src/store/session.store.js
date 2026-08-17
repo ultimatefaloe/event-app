@@ -5,13 +5,12 @@ export const useSessionStore = create()(
   persist(
     (set, get) => ({
       session: null,
-      loading: false,
-      error: null,
+      isAuthenticated: () => !!get().session,
 
-      setSession: (session) => {
-        console.log("Setting session:", session);
-        set({ session })
+      setSession: (user) => {
+        set({ session: user })
       },
+
       clearSession: () => set({ session: null }),
 
     }),

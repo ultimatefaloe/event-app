@@ -1,6 +1,8 @@
 import React from "react";
 import { Outlet, Link } from "react-router-dom";
 import { ArrowLeftFromLineIcon } from "lucide-react";
+
+
 const AuthLayout = () => {
   return (
     <div className="min-h-screen bg-gray-950 text-gray-100 flex flex-col">
