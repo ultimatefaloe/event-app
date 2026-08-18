@@ -1,51 +1,3 @@
-// import { create } from "zustand";
-// import { persist, createJSONStorage } from "zustand/middleware";
-
-// export const useEventStore = create()(
-//   persist(
-//     (set, get) => ({
-//       events: [],
-//       loading: false,
-//       error: null,
-
-//       eventById: id => {
-//         const event = get().events.find((event) => event.id === id);
-//         return event || null;
-//       },
-
-//       addEvent: (event) =>
-//         set((state) => ({
-//           events: [
-//             ...state.events,
-//             {
-//               ...event,
-//               id: Date.now().toString(),
-//               createdAt: new Date().toISOString(),
-//               updatedAt: null,
-//             },
-//           ],
-//         })),
-
-//       updateEvent: (id, data) =>
-//         set((state) => ({
-//           events: state.events.map((event) =>
-//             event.id === id
-//               ? { ...event, ...data, updatedAt: new Date().toISOString() }
-//               : event,
-//           ),
-//         })),
-//       removeEvent: (id) =>
-//         set((state) => ({
-//           events: state.events.filter((event) => event.id !== id),
-//         })),
-//     }),
-//     {
-//       name: "event:storage",
-//       storage: createJSONStorage(() => localStorage),
-//     },
-//   ),
-// );
-
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { events } from "../data/events";
@@ -73,13 +25,37 @@ export const useEventStore = create()(
         };
       },
 
+      // eventsByCategorySlug: (slug) => {
+      //   const events = get().events.filter((event) => event.category === slug);
+      //   if (!events || events.length === 0) {
+      //     return {
+      //       success: false,
+      //       message: `Events with category ${slug} is not found`,
+      //       data: null,
+      //     };
+      //   }
+      //   return {
+      //     success: true,
+      //     message: "Events retrieve successfully",
+      //     data: events,
+      //   };
+      // },
+
       addEvent: (event) => {
+        // do validation and ensure the session id && user is Authenticated
+        // get your slug, toLowercase, trim, replace spaces with dashes, remove special characters
         const newEvent = {
           id: get().events.length + 1, // Date.now()
           name: event.name,
+          // userId: session.id
           description: event.description,
           date: event.date,
           status: event.status,
+          // slug: event.name
+          //   .toLowerCase()
+          //   .trim()
+          //   .replace(/\s+/g, "-")
+          //   .replace(/[^a-z0-9-]/g, ""),
           category: eveeventtData.category,
           location: event.location,
           createdAt: new Date().toISOString(),
@@ -98,6 +74,7 @@ export const useEventStore = create()(
       },
 
       updateEvent: (id, data) => {
+        // do validation and ensure the session id is the same as the event userId before updating
         const event = get().events.find((event) => event.id === id);
         if (!event) {
           return {
@@ -127,6 +104,7 @@ export const useEventStore = create()(
       },
 
       deleteEvent: (id) => {
+        // do validation and ensure the session id is the same as the event userId before updating
         const event = get().events.find((event) => event.id === id);
         if (!event) {
           return {

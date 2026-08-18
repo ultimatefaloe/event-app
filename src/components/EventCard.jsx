@@ -2,8 +2,10 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 import { Edit, Trash2 } from "lucide-react";
+import { useAuth } from "../providers/AuthProvider";
 
 const EventCard = ({ event, onEdit, onDelete }) => {
+  const { session, isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const {
     id,
@@ -43,6 +45,8 @@ const EventCard = ({ event, onEdit, onDelete }) => {
             </p>
             <p className="text-xs text-gray-400">{date}</p>
           </div>
+
+        {isAuthenticated && event.userId === session.id && (
           <div className="flex gap-1">
             <button
               onClick={(e) => {
@@ -62,7 +66,8 @@ const EventCard = ({ event, onEdit, onDelete }) => {
             >
               <Trash2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-red-500" />
             </button>
-          </div>
+          </div>)}
+
         </div>
 
         <p className="text-right text-xs text-gray-400 border-t border-gray-100 pt-1">

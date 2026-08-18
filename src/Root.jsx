@@ -24,6 +24,10 @@ const router = createBrowserRouter([
         element: <Event />,
       },
       {
+        path: "/events/category/:slug",
+        element: <EventDetail />,
+      },
+      {
         path: "/events/new",
         element: <NewEvent />,
       },
